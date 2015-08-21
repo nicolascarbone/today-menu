@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block internal-grid %}
+<div class="ui items">
+  <div class="item">
+    <div class="image">
+      <img src="{% static 'img/milanesas.jpg' %}">
+    </div>
+    <div class="content">
+      <a class="header">Milanesas con pure</a>
+      <div class="meta">
+        <span>te lo tengo que explicar?</span>
+      </div>
+      <div class="description">
+        <p></p>
+      </div>
+      <div class="extra">
+        Additional Details
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
