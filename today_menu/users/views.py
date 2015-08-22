@@ -1,7 +1,8 @@
 
 from django.shortcuts import redirect
 from django.views.generic.edit import FormView
-from django.contrib.auth import authenticate, login
+from django.views.generic.base import RedirectView
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
 
@@ -19,8 +20,16 @@ class LoginView(FormView):
           login(self.request, user)
           return redirect('home:home')
 
-
       return super(LoginView, self).form_valid(form)
+
+
+class LogoutView(RedirectView):
+    url = 'home:home'
+
+    def get(self, request, *args, **kwargs):
+        print("logout user")
+        logout(request)
+        return super(LogoutView, self).get(request, *args, **kwargs)
 
 
 class SignUpView(FormView):

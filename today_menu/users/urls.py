@@ -15,10 +15,11 @@ Including another URLconf
 """
 
 from django.conf.urls import include, url
-from .views import LoginView, SignUpView
+from .views import LoginView, LogoutView, SignUpView
 
 urlpatterns = [
     url(r'^login/$', LoginView.as_view(), name='login'),
+    url(r'^logout/$', LogoutView.as_view(), name='logout'),
     url(r'^signup/$', SignUpView.as_view(), name='signup')
 ]
 # urlpatterns += staticfiles_urlpatterns()
