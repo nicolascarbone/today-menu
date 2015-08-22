@@ -1,0 +1,45 @@
+
+<form class="ui form" method="post" id="form-to-submit">
+
+  {% csrf_token %}
+
+  {% for field in form %}
+
+    <div class="field {% if field.errors %}error{% endif %}">
+      <label>{{ field.label_tag }}</label>
+      {{ field }}
+      {% if field.errors %}
+        {% for error in field.errors %}
+          <p style="color: red">Oh no! {{ error }}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+  {% endfor %}
+
+  <div>
+    <div class="ui animated olive button" tabindex="0" id="submit-form-btn">
+      <div class="visible content">Next</div>
+      <div class="hidden content">
+        <i class="right arrow icon"></i>
+      </div>
+    </div>
+    <a href="{% url 'home:home' %}">
+      <div class="ui animated button" tabindex="0">
+        <div class="visible content">Cancel</div>
+        <div class="hidden content">
+          <i class="left arrow icon"></i>
+        </div>
+      </div>
+    </a>
+  </div>
+
+</form>
+
+<script type="text/javascript">
+  $( document ).ready(function() {
+    $('#submit-form-btn').on('click', function() {
+      $('#form-to-submit').submit();
+    });
+  });
+</script>
