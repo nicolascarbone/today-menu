@@ -1,7 +1,7 @@
 'use strict';
 
-var $        = require('jquery'),
-    Backbone = require('backbone');
+var Backbone      = require('backbone'),
+    SimpleStorage = require('simplestorage.js');
 
 module.exports = Backbone.Router.extend({
 
@@ -10,10 +10,8 @@ module.exports = Backbone.Router.extend({
     'ingredients': 'ingredients'
   },
 
-  home: function() {
-    // var HomeModule = require('./views/home.js'),
-    //     HomeView   = new HomeModule();
-    // HomeView.render();
+  initialize: function() {
+    console.log("initialize router");
   },
 
   selectTab: function( tab ) {
@@ -23,12 +21,28 @@ module.exports = Backbone.Router.extend({
     item.addClass('active');
   },
 
+  cache: {},
+
+  getView: function( key ) {
+    var KeyView = this.cache[key] || undefined;
+    console.log("KeyView ", KeyView);
+    if ( KeyView === undefined ) {
+      var KeyModule = require('./views/ingredients.js'),
+          KeyView   = new KeyModule();
+      console.log("creating new view")
+      this.cache[key] = KeyView;
+    }
+
+    return KeyView;
+  },
+
+  home: function() {},
+
   ingredients: function() {
     this.selectTab('#ingredients');
-    var IngredientsModule = require('./views/ingredients.js'),
-        IngredientsView   = new IngredientsModule();
-
-    IngredientsView.render();
+    var View = this.getView('ingredients');
+    console.log("VIEW ", View);
+    View.render();
   },
 
 });

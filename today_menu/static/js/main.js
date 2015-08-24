@@ -1,10 +1,13 @@
 
 'use strict';
 
-var $         = require('jquery'),
-    Backbone  = require('backbone'),
-    Router    = require('./router'),
-    router    = new Router();
+var Backbone  = require('backbone'),
+    Router    = require('./router');
 
 Backbone.$ = $;
-Backbone.history.start();
+// Backbone.LocalStorage = require("backbone.localstorage");
+
+$( document ).ready(function() {
+    var router = new Router();
+    Backbone.history.start();
+});

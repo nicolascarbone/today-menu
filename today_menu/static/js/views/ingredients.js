@@ -1,6 +1,5 @@
 
-var $          = require('jquery'),
-    Backbone   = require('backbone'),
+var Backbone   = require('backbone'),
     Collection = require('../collections/ingredients.js');
 
 module.exports = Backbone.View.extend({
@@ -10,25 +9,23 @@ module.exports = Backbone.View.extend({
   },
 
   addIngredient: function() {
-    $('.ui.modal')
-      .modal('show')
-    ;
+    $('.ui.modal').modal('show');
   },
 
   initialize: function() {
     var RendererModule = require('../utils/renderer.js');
     this.RendererView  = new RendererModule();
-    this.collection    = new Collection();
+    this.collection    = new Collection().fetch({async: false});
+
+    var self = this;
+    $('#add-element-btn').on('click', function() {
+      self.addIngredient();
+    });
   },
 
   render: function() {
-    var self = this;
-    this.collection.fetch({
-      'success': function(response, col) {
-        self.RendererView.renderIngredients( col, $('#menu-container') );
-      }
-    });
-
+    var ingredients = this.collection.responseJSON;
+    this.RendererView.renderIngredients( ingredients, $('#menu-container') );
   }
 
 });
