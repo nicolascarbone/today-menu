@@ -1,11 +1,11 @@
 /** @jsx React.DOM */
-var React     = require('react'),
-    Backbone  = require('backbone'),
-    BackboneReactMixin = require('backbone-react-component');
+var React         = require('react'),
+    Backbone      = require('backbone'),
+    BackboneReact = require('backbone-react-component');
 
 var IngredientComponent = React.createClass({
 
-  mixins: [BackboneReactMixin],
+  mixins: [Backbone.React.Component.mixin],
 
   render: function() {
     return(

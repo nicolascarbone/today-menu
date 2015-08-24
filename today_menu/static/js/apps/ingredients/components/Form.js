@@ -1,11 +1,11 @@
 
 var React = require('react');
 
-var FormComponent = React.createBackboneClass({
+var FormComponent = React.createClass({
 
   render: function() {
     return(
-      <form className="ui form">
+      <form className="ui form" onSubmit="{this.handleSubmit}">
         <div className="field">
           <label>Name</label>
           <input type="text" name="name" placeholder="Name" />

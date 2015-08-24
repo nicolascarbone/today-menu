@@ -16,7 +16,7 @@ module.exports = Backbone.View.extend({
 
   renderIngredients: function( ingredients, container ) {
     var IngredientsComponent = require('../apps/ingredients/components/Ingredients');
-    React.render(<IngredientsComponent ingredients={ingredients}/>, container.get(0));
+    React.render(<IngredientsComponent collection={ingredients}/>, container.get(0));
   },
 
   renderIngredientsForm: function( container ) {

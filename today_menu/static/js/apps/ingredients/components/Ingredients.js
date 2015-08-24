@@ -1,20 +1,20 @@
 /** @jsx React.DOM */
-var React      = require('react'),
-    Ingredient = require('./Ingredient.js');
+var React         = require('react'),
+    Ingredient    = require('./Ingredient.js'),
+    Backbone      = require('backbone'),
+    BackboneReact = require('backbone-react-component');
 
 var IngredientsComponent = React.createClass({
 
-  render: function() {
-    return (
-      <div className="ui items">
-        {
-          this.props.ingredients.map(function( ingredient ) {
-            return <Ingredient key={ingredient.id} model={ingredient} />
-          })
-        }
-      </div>
-    );
+  mixins: [Backbone.React.Component.mixin],
 
+  renderIngredient: function( ingredient ) {
+    var model = new Backbone.Model(ingredient);
+    return <Ingredient key={ingredient.id} model={ingredient} />
+  },
+
+  render: function() {
+    return <div className="ui items">{this.state.collection.map(this.renderIngredient)}</div>
   }
 
 });

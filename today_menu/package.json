@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "backbone": "1.2.2",
+    "backbone-react-component": "^0.9.0",
     "better-console": "^0.2.4",
     "browserify": "~11.0.1",
     "del": "^1.2.1",
