@@ -5,20 +5,30 @@ var $          = require('jquery'),
 
 module.exports = Backbone.View.extend({
 
-    initialize: function() {
-      var RendererModule = require('../utils/renderer.js');
-      this.RendererView  = new RendererModule();
-      this.collection    = new Collection();
-    },
+  events: {
+    'click #add-element-btn': 'addIngredient'
+  },
 
-    render: function() {
-      var self = this;
-      this.collection.fetch({
-        'success': function(response, col) {
-          self.RendererView.renderIngredients( col, $('#menu-container') );
-        }
-      });
+  addIngredient: function() {
+    $('.ui.modal')
+      .modal('show')
+    ;
+  },
 
-    }
+  initialize: function() {
+    var RendererModule = require('../utils/renderer.js');
+    this.RendererView  = new RendererModule();
+    this.collection    = new Collection();
+  },
+
+  render: function() {
+    var self = this;
+    this.collection.fetch({
+      'success': function(response, col) {
+        self.RendererView.renderIngredients( col, $('#menu-container') );
+      }
+    });
+
+  }
 
 });

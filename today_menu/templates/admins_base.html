@@ -45,7 +45,9 @@
     <div class="ui pointing menu">
       <a class="active item">Home</a>
       <a class="item" href="#ingredients">Ingredientes</a>
+      <a class="item" href="#prices">Precios</a>
       <a class="item" data="#recipes">Recetas</a>
+      <a class="item" data="#orders">Pedidos</a>
       <div class="right menu">
         <div class="item">
           <div class="ui transparent icon input">
@@ -56,41 +58,13 @@
       </div>
     </div>
     <div class="ui segment">
-      <button class="ui basic button">
+      <button class="ui basic button" id="add-element-btn">
         <i class="icon add square"></i>
         Add
       </button>
       <p id="menu-container"></p>
     </div>
   </div>
-
-{% comment %}
-
-  <div class="two wide column">
-    <div class="ui top attached vertical tabular menu" >
-      <a class="item active" data-tab="first">First</a>
-      <a class="item" data-tab="second">Second</a>
-      <a class="item" data-tab="third">Third</a>
-    </div>
-  </div>
-  <div class="fourteen wide column">
-    <div class="ui bottom attached tab segment active" data-tab="first">
-      First
-    </div>
-    <div class="ui bottom attached tab segment" data-tab="second">
-      Second
-    </div>
-    <div class="ui bottom attached tab segment" data-tab="third">
-      Third
-    </div>
-  </div>
-
-
-{% endcomment %}
-
-
-
-
 
 {% comment %}
 <div class="ui vertical menu" style="display: none">
