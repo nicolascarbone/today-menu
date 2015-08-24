@@ -39,7 +39,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     #  my apps
     'home',
-    'users'
+    'users',
+    'administrators',
+    'ingredients'
 )
 
 MIDDLEWARE_CLASSES = (

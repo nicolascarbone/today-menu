@@ -18,46 +18,50 @@
 
   <body>
 
-    <div class="grid">
+    {% block grid %}
 
-      <div class="ui main container">
-
-        {% if not user.is_authenticated %}
-          <div class="ui buttons">
-            <a href="{% url 'users:login' %}"><button class="ui button">Login</button></a>
-            <div class="or"></div>
-            <a href="{% url 'users:signup' %}"><button class="ui positive button">Sign up</button></a>
+      <div class="ui page grid">
+        <div class="three column row">
+          <div class="column"> Horizontal section, column 1</div>
+          <div class="column"> Horizontal section, column 2</div>
+          <div class="column">
+            {% if not user.is_authenticated %}
+              <div class="ui buttons">
+                <a href="{% url 'users:login' %}"><button class="ui button">Login</button></a>
+                <div class="or"></div>
+                <a href="{% url 'users:signup' %}"><button class="ui positive button">Sign up</button></a>
+              </div>
+            {% else %}
+              <div class="ui buttons">
+                <a href="{% url 'users:logout' %}"><button class="ui button">Logout</button></a>
+              </div>
+            {% endif %}
           </div>
-        {% endif %}
-
-        <div class="ui three item menu">
-          <a class="active item">Semana Actual</a>
-          <a class="item">Semana que viene</a>
-          <a class="item">Mes</a>
         </div>
-
-        <div class="ui vertical menu"  style="display: none">
-          <div class="ui dropdown item">
-            Categories
-            <i class="dropdown icon"></i>
-            <div class="menu">
-              <a class="item">Electronics</a>
-              <a class="item">Automotive</a>
-              <a class="item">Home</a>
+        <div class="two column row">
+          {% block menu %}
+            <div class="column">
+              <div class="ui segment">
+                <div class="ui vertical segment">
+                  <p>Left column, row 1</p>
+                </div>
+                <div class="ui vertical segment">
+                  <p>Left column, row 2</p>
+                </div>
+                <div class="ui vertical segment">
+                  <p>Left column, row 3</p>
+                </div>
+              </div>
             </div>
+          {% endblock %}
+          <div class="column">
+            <div class="row"> Right column, row 1</div>
+            <div class="row"> Right column, row 2</div>
           </div>
         </div>
-
-        <div class="ui segment">
-          <p>
-            {% block content %}
-            {% endblock %}
-          </p>
-        </div>
-
       </div>
 
-    </div>
+    {% endblock grid %}
 
   </body>
 
