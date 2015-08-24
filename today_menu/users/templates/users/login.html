@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 
-{% block content %}
-
-  <h2 class="ui header">Login</h2>
-  {% include 'form.html' with form=form %}
-
+{% block grid %}
+  <div class="one column row">
+    <div class="column">
+      <h2 class="ui header">Login</h2>
+      {% include 'form.html' with form=form %}
+    </div>
+  </div>
 {%endblock %}

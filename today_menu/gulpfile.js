@@ -23,7 +23,7 @@ gulp.task('browserify', function() {
     // Start piping stream to tasks!
     .pipe(gulp.dest('static/build/'));
 
-
+    /*
     var watcher  = watchify(bundler);
     return watcher
     .on('update', function () { // When any files update
@@ -38,6 +38,7 @@ gulp.task('browserify', function() {
     .bundle() // Create the initial bundle when starting the task
     .pipe(source('./bundle.js'))
     .pipe(gulp.dest('static/build/'));
+    */
 
 });
 

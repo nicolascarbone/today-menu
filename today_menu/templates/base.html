@@ -3,12 +3,9 @@
 <html>
 
   <head>
-
     <link rel="stylesheet" type="text/css" href="{% static 'semantic/dist/semantic.min.css' %}">
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="{% static 'semantic/dist/semantic.js' %}"></script>
-
     <script>
       $(document).ready(function() {
         $('.dropdown').dropdown();
@@ -18,9 +15,8 @@
 
   <body>
 
-    {% block grid %}
-
-      <div class="ui page grid">
+    <div class="ui page padded grid">
+      {% block grid %}
         <div class="three column row">
           <div class="column"> Horizontal section, column 1</div>
           <div class="column"> Horizontal section, column 2</div>
@@ -55,15 +51,19 @@
             </div>
           {% endblock %}
           <div class="column">
+            {% block content %}
             <div class="row"> Right column, row 1</div>
             <div class="row"> Right column, row 2</div>
+            {% endblock %}
           </div>
         </div>
-      </div>
-
-    {% endblock grid %}
+      {% endblock grid %}
+    </div>
 
   </body>
+
+  {% block scripts %}
+  {% endblock %}
 
   <script src="{% static 'build/bundle.js' %}"></script>
 
