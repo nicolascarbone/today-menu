@@ -9,14 +9,19 @@ module.exports = Backbone.View.extend({
     console.log("render!!!!");
   },
 
-  renderIngredient: function( container ) {
-    var IngredientComponent = require('../views/components/Ingredient');
-    React.render(<IngredientComponent />, container.get(0));
-  },
+  // renderIngredient: function( container ) {
+  //   var IngredientComponent = require('../apps/ingredients/components/Ingredient');
+  //   React.render(<IngredientComponent />, container.get(0));
+  // },
 
   renderIngredients: function( ingredients, container ) {
-    var IngredientsComponent = require('../views/components/Ingredients');
+    var IngredientsComponent = require('../apps/ingredients/components/Ingredients');
     React.render(<IngredientsComponent ingredients={ingredients}/>, container.get(0));
+  },
+
+  renderIngredientsForm: function( container ) {
+    var FormComponent = require('../apps/ingredients/components/Form');
+    React.render(<FormComponent />, container.get(0));
   }
 
 });

@@ -2,7 +2,7 @@
 var React         = require('react'),
     ReactBackbone = require('react.backbone');
 
-var IngredientComponent = React.createClass({
+var IngredientComponent = React.createBackboneClass({
 
   render: function() {
     return(

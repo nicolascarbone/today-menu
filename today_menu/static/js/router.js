@@ -1,13 +1,13 @@
 'use strict';
 
-var Backbone      = require('backbone'),
-    SimpleStorage = require('simplestorage.js');
+var Backbone      = require('backbone');
 
 module.exports = Backbone.Router.extend({
 
   routes: {
     'home': 'home',
-    'ingredients': 'ingredients'
+    'ingredients': 'ingredients',
+    'recipes': 'recipes'
   },
 
   initialize: function() {
@@ -27,7 +27,7 @@ module.exports = Backbone.Router.extend({
     var KeyView = this.cache[key] || undefined;
     console.log("KeyView ", KeyView);
     if ( KeyView === undefined ) {
-      var KeyModule = require('./views/ingredients.js'),
+      var KeyModule = require('./apps/ingredients/view.js'),
           KeyView   = new KeyModule();
       console.log("creating new view")
       this.cache[key] = KeyView;
@@ -44,5 +44,11 @@ module.exports = Backbone.Router.extend({
     console.log("VIEW ", View);
     View.render();
   },
+
+  recipes: function() {
+    var View = this.getView('ingredients');
+    console.log("VIEW ", View);
+    View.render();
+  }
 
 });
