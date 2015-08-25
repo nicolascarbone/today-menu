@@ -10,7 +10,7 @@ var IngredientsComponent = React.createClass({
 
   renderIngredient: function( ingredient ) {
     var model = new Backbone.Model(ingredient);
-    return <Ingredient key={ingredient.id} model={ingredient} />
+    return <Ingredient key={ingredient.id} model={model} />
   },
 
   render: function() {

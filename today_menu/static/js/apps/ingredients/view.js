@@ -1,8 +1,14 @@
 
 var Backbone   = require('backbone'),
-    Collection = require('./collection.js'),
-    BackboneReactMixin = require('backbone-react-component'),
-    React = require('react');
+    Collection = require('./collection.js');
+    // BackboneReactMixin = require('backbone-react-component'),
+    // React = require('react');
+
+
+var IngredientModel = Backbone.Model.extend({
+  idAttribute: 'id',
+  url: '/ingredients/save/'
+});
 
 module.exports = Backbone.View.extend({
 
@@ -11,7 +17,7 @@ module.exports = Backbone.View.extend({
   },
 
   addIngredient: function() {
-    this.RendererView.renderIngredientsForm( $('#modal-form-container') );
+    this.RendererView.renderIngredientsForm( this.model, $('#modal-form-container') );
     $('.ui.modal').modal('show');
   },
 
@@ -19,8 +25,9 @@ module.exports = Backbone.View.extend({
     var RendererModule = require('../../utils/renderer.js'),
         self = this;
 
-    this.RendererView  = new RendererModule();
-    this.collection    = new Collection();
+    this.RendererView = new RendererModule();
+    this.collection   = new Collection();
+    this.model        = new IngredientModel();
 
     $('#add-element-btn').on('click', function() {
       self.addIngredient();
@@ -33,7 +40,7 @@ module.exports = Backbone.View.extend({
       self.RendererView.renderIngredients( col, $('#menu-container') );
     }});
 
-    setTimeout(function() {
+    /*setTimeout(function() {
       var n = {
         description: "",
         name: "Repollo",
@@ -42,7 +49,7 @@ module.exports = Backbone.View.extend({
       }
       self.collection.add( n );
     }, 5000)
-
+*/
   }
 
 });

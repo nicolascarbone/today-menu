@@ -25,11 +25,11 @@ module.exports = Backbone.Router.extend({
 
   getView: function( key ) {
     var KeyView = this.cache[key] || undefined;
-    console.log("KeyView ", KeyView);
+    // console.log("KeyView ", KeyView);
     if ( KeyView === undefined ) {
       var KeyModule = require('./apps/ingredients/view.js'),
           KeyView   = new KeyModule();
-      console.log("creating new view")
+      // console.log("creating new view")
       this.cache[key] = KeyView;
     }
 
@@ -41,13 +41,13 @@ module.exports = Backbone.Router.extend({
   ingredients: function() {
     this.selectTab('#ingredients');
     var View = this.getView('ingredients');
-    console.log("VIEW ", View);
+    // console.log("VIEW ", View);
     View.render();
   },
 
   recipes: function() {
     var View = this.getView('ingredients');
-    console.log("VIEW ", View);
+    // console.log("VIEW ", View);
     View.render();
   }
 
