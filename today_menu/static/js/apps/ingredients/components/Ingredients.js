@@ -1,6 +1,7 @@
 /** @jsx React.DOM */
 var React         = require('react'),
     Ingredient    = require('./Ingredient.js'),
+    Model         = require('../model.js'),
     Backbone      = require('backbone'),
     BackboneReact = require('backbone-react-component');
 
@@ -9,7 +10,7 @@ var IngredientsComponent = React.createClass({
   mixins: [Backbone.React.Component.mixin],
 
   renderIngredient: function( ingredient ) {
-    var model = new Backbone.Model(ingredient);
+    var model = new Model(ingredient);
     return <Ingredient key={ingredient.id} model={model} />
   },
 

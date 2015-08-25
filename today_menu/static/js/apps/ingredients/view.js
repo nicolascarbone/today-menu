@@ -2,12 +2,8 @@
 var _          = require('underscore'),
     Backbone   = require('backbone'),
     Collection = require('./collection.js'),
+    Model      = require('./model.js'),
     React      = require('react');
-
-var IngredientModel = Backbone.Model.extend({
-  idAttribute: 'id',
-  urlRoot: '/ingredients/save/'
-});
 
 module.exports = Backbone.View.extend({
 
@@ -27,7 +23,7 @@ module.exports = Backbone.View.extend({
 
   addIngredient: function() {
     var FormComponent = require('./components/Form'),
-        model = new IngredientModel();
+        model = new Model();
 
     React.render(<FormComponent collection={this.collection} model={model} />, $('#modal-form-container').get(0));
     $('.ui.modal').modal('show');

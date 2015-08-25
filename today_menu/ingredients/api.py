@@ -1,8 +1,8 @@
 
 import json
 
+from django.http import QueryDict, HttpResponse
 from django.views.generic.base import View
-from django.http import HttpResponse
 
 from .models import Ingredient
 
@@ -34,8 +34,8 @@ class Save(Api):
         return self.response(collection=[model])
 
     def delete(self, request, *args, **kwargs):
-        data = self.get_data(request.POST)
-        id = data.get('name')
-        description = data.get('description')
-        #model, created = Ingredient.objects.get_or_create(name=name)
-        return self.response(collection=[model])
+        print("entro al delete %s" % kwargs)
+        pk = kwargs.get('pk');
+        Ingredient.objects.get(pk=pk).delete()
+        return HttpResponse({})
+
