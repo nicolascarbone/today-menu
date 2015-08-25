@@ -14,7 +14,7 @@ var IngredientsComponent = React.createClass({
   },
 
   render: function() {
-    return <div className="ui list ingredients">{this.state.collection.map(this.renderIngredient)}</div>
+    return <div className="ui list">{this.state.collection.map(this.renderIngredient)}</div>
   }
 
 });

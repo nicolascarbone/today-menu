@@ -6,23 +6,15 @@ var _          = require('underscore'),
 
 var IngredientModel = Backbone.Model.extend({
   idAttribute: 'id',
-  urlRoot: '/ingredients/save/'
+  url: '/ingredients/save/'
 });
 
 module.exports = Backbone.View.extend({
 
-  el: '.ingredients',
+  //el: '#menu-container',
 
   events: {
-    'click #add-element-btn': 'addIngredient',
-  },
-
-  initialize: function() {
-    var self = this;
-    this.collection = new Collection();
-    $('#add-element-btn').on('click', function() {
-      self.addIngredient();
-    });
+    'click #add-element-btn': 'addIngredient'
   },
 
   addIngredient: function() {
@@ -31,6 +23,14 @@ module.exports = Backbone.View.extend({
 
     React.render(<FormComponent collection={this.collection} model={model} />, $('#modal-form-container').get(0));
     $('.ui.modal').modal('show');
+  },
+
+  initialize: function() {
+    var self = this;
+    this.collection = new Collection();
+    $('#add-element-btn').on('click', function() {
+      self.addIngredient();
+    });
   },
 
   render: function() {

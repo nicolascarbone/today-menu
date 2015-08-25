@@ -10,6 +10,8 @@
 
   <body>
 
+    {% csrf_token %}
+
     <div class="ui page padded grid">
       {% block grid %}
         <div class="three column row">
