@@ -3,16 +3,23 @@ var React = require('react');
 
 var FormComponent = React.createClass({
 
+  getInitialState: function() {
+    return {
+      name: '',
+      description: ''
+    };
+  },
+
+
   handleSubmit: function( e ) {
-    console.log(e);
     e.preventDefault();
-    console.log("handle submit", this.state);
+    console.log("handle submit", this.state.name);
   },
 
   handleChange: function( field, e ) {
-    this.setState[field] = {
-      field: e.target.value
-    };
+    var nextState = {};
+    nextState[field] = e.target.value;
+    this.setState(nextState);
   },
 
   render: function() {

@@ -1,5 +1,6 @@
 
 var Backbone   = require('backbone'),
+    _          = require('underscore'),
     Collection = require('./collection.js');
     // BackboneReactMixin = require('backbone-react-component'),
     // React = require('react');
@@ -34,22 +35,33 @@ module.exports = Backbone.View.extend({
     });
   },
 
+  // handleSubmit: function() {},
+
   render: function() {
     var self = this;
     this.collection.fetch({'success': function(col, response) {
       self.RendererView.renderIngredients( col, $('#menu-container') );
     }});
 
-    /*setTimeout(function() {
-      var n = {
-        description: "",
-        name: "Repollo",
-        image: "http://wiki.solid-run.com/images/7/75/No_image_available.png",
-        id: 3
-      }
-      self.collection.add( n );
+    setTimeout(function() {
+      // var n = {
+      //   description: "",
+      //   name: "Repollo",
+      //   image: "http://wiki.solid-run.com/images/7/75/No_image_available.png",
+      //   id: 3
+      // };
+      // self.collection.add( n );
+
+      // var modelito = _.where(this.collection.models, {name: "Cebolla"});
+
+      var modelito = self.collection.find(function(item){
+        console.log("item.get('name') ", item.get('name'));
+        return item.get('name') === 'Cebolla';
+      });
+      console.log("modificado", modelito);
+      self.model.set({'name': 'modificado'});
     }, 5000)
-*/
+
   }
 
 });
