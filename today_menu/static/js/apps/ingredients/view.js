@@ -1,9 +1,12 @@
 
-var _          = require('underscore'),
-    Backbone   = require('backbone'),
-    Collection = require('./collection.js'),
-    Model      = require('./model.js'),
-    React      = require('react');
+var _             = require('underscore'),
+    React         = require('react');
+    Model         = require('./model.js'),
+    Backbone      = require('backbone'),
+    Collection    = require('./collection.js'),
+    IngsComponent = require('./components/Ingredients'),
+    FormComponent = require('./components/Form');
+
 
 module.exports = Backbone.View.extend({
 
@@ -22,17 +25,14 @@ module.exports = Backbone.View.extend({
   },
 
   addIngredient: function() {
-    var FormComponent = require('./components/Form'),
-        model = new Model();
-
+    var model = new Model();
     React.render(<FormComponent collection={this.collection} model={model} />, $('#modal-form-container').get(0));
     $('.ui.modal').modal('show');
   },
 
   render: function() {
     this.collection.fetch({'success': function(col, response) {
-      var IngredientsComponent = require('./components/Ingredients');
-      React.render(<IngredientsComponent collection={col}/>, $('#menu-container').get(0));
+      React.render(<IngsComponent collection={col}/>, $('#menu-container').get(0));
     }});
   }
 
