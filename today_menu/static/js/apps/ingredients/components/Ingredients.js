@@ -10,7 +10,7 @@ var IngredientsComponent = React.createClass({
   mixins: [Backbone.React.Component.mixin],
 
   renderIngredient: function( ingredient ) {
-    var model = new Model(ingredient);
+    var model = this.getCollection().get(ingredient.id);
     return <Ingredient key={ingredient.id} model={model} />
   },
 

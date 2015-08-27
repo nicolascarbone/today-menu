@@ -37,6 +37,7 @@
     $(document).ready(menu.ready);
 
     // $('.menu .item').tab();
+    //$('.ui.dropdown').dropdown();
 
 
   // });
@@ -47,7 +48,7 @@
       <a class="active item">Home</a>
       <a class="item" href="#ingredients">Ingredientes</a>
       <a class="item" href="#prices">Precios</a>
-      <a class="item" data="#recipes">Recetas</a>
+      <a class="item" href="#recipes">Recetas</a>
       <a class="item" data="#orders">Pedidos</a>
       <div class="right menu">
         <div class="item">
@@ -66,6 +67,8 @@
       <p id="menu-container"></p>
     </div>
   </div>
+
+{% include 'recipes/form.html' %}
 
 {% comment %}
 <div class="ui vertical menu" style="display: none">

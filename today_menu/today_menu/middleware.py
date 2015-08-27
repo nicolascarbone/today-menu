@@ -6,8 +6,10 @@ class Nico(object):
     def process_request(self, request):
         print("MIDDLEWARE")
         print(request.method)
-        print(request.body)
+        print(request)
         if request.method == 'DELETE':
-            request.DELETE = self.get_data(QueryDict(request.body))
+            #request.DELETE = self.get_data(QueryDict(request.body))
+            pass
         elif request.method == 'PUT':
-            request.PUT = self.get_data(QueryDict(request.body))
+            #request.PUT = self.get_data(QueryDict(request.body))
+            pass

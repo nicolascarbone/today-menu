@@ -37,6 +37,14 @@ var FormComponent = React.createClass({
           <label>Description</label>
           <input type="text" name="description" placeholder="Last Name" onChange={this.handleChange.bind(this, 'description')} />
         </div>
+        <div className="field">
+          <label>Ingredients</label>
+          <select className="ui fluid search dropdown" multiple="">
+            <option value="">Select Country</option>
+            <option value="AF">Afghanistan</option>
+            <option value="AF">Argentina</option>
+          </select>
+        </div>
         <button className="ui button" type="submit">Submit</button>
       </form>
     );

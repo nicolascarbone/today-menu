@@ -3,7 +3,7 @@ var React         = require('react'),
     Backbone      = require('backbone'),
     BackboneReact = require('backbone-react-component');
 
-var IngredientComponent = React.createClass({
+var RecipeComponent = React.createClass({
 
   mixins: [Backbone.React.Component.mixin],
 
@@ -20,4 +20,4 @@ var IngredientComponent = React.createClass({
 
 });
 
-module.exports = IngredientComponent;
+module.exports = RecipeComponent;

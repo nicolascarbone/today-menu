@@ -28,4 +28,5 @@ urlpatterns = [
     url(r'^users/', include('users.urls', namespace='users')),
     url(r'^administrators/', include('administrators.urls', namespace='administrators')),
     url(r'^ingredients/', include('ingredients.urls', namespace='ingredients')),
+    url(r'^recipes/', include('recipes.urls', namespace='recipes')),
 ]

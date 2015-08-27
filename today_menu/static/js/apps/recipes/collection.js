@@ -5,6 +5,6 @@ var Backbone  = require('backbone'),
 // console.log("model", new Model());
 
 module.exports = Backbone.Collection.extend({
-    url: '/ingredients/api/all/',
+    url: '/recipes/api/all/',
     model: Model
 });

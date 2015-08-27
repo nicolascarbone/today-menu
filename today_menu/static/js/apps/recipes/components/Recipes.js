@@ -1,6 +1,6 @@
 /** @jsx React.DOM */
 var React         = require('react'),
-    Ingredient    = require('./Ingredient.js'),
+    Recipe        = require('./Recipe.js'),
     Backbone      = require('backbone'),
     BackboneReact = require('backbone-react-component');
 
@@ -8,13 +8,13 @@ var IngredientsComponent = React.createClass({
 
   mixins: [Backbone.React.Component.mixin],
 
-  renderIngredient: function( ingredient ) {
-    var model = new Backbone.Model(ingredient);
-    return <Ingredient key={ingredient.id} model={model} />
+  renderRecipes: function( recipe ) {
+    var model = this.getCollection().get(recipe.id);
+    return <Recipe key={recipe.id} model={model} />
   },
 
   render: function() {
-    return <div className="ui list">{this.state.collection.map(this.renderIngredient)}</div>
+    return <div className="ui list">{this.state.collection.map(this.renderRecipes)}</div>
   }
 
 });

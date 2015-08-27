@@ -46,8 +46,8 @@ module.exports = Backbone.Router.extend({
   },
 
   recipes: function() {
-    var View = this.getView('ingredients');
-    // console.log("VIEW ", View);
+    var ViewModule = require('./apps/recipes/view.js'),
+        View   = new ViewModule();
     View.render();
   }
 
