@@ -62,6 +62,7 @@
     "react": ">=0.13.3",
     "reactify": "~1.1.1",
     "require-dot-file": "^0.4.0",
+    "requirejs-text": "^2.0.12",
     "semantic-ui": "^2.0.8",
     "underscore": "^1.8.3",
     "underscore.string": "^3.1.1",

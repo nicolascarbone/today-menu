@@ -24,6 +24,18 @@ class All(Api):
         return self.response(collection=ingredients)
 
 
+class Search(Api):
+
+    def get(self, request, *args, **kwargs):
+        query = request.GET.get('query', '')
+        collection = Ingredient.objects.filter(name__contains=query)
+        response = []
+        for model in collection:
+            response.append({'title': model.name})
+
+        return HttpResponse(json.dumps(response))
+
+
 class Save(Api):
 
     def post(self, request, *args, **kwargs):
