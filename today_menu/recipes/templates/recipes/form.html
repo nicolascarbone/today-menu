@@ -1,5 +1,8 @@
-<div style="display: none">
-  <form class="ui form" id="recipes-form">
+  <button class="ui olive button add-element-btn">
+    <i class="icon add square"></i>
+    Add
+  </button>
+  <form class="ui form recipes-form" id="recipes-form">
     <div class="field">
       <label>Name</label>
       <input type="text" name="name" placeholder="Name"/>
@@ -8,7 +11,32 @@
       <label>Description</label>
       <input type="text" name="description" placeholder="Last Name"/>
     </div>
-    <div id="search-fields-container" class="field"></div>
+    <div id="search-fields-container" class="field">
+      <div class="field">
+        <label>Ingredients</label>
+        <button class="ui olive button add-ingredient-btn">
+          <i class="icon add square"></i>
+          Add Another
+        </button>
+        <div class="ui grid search-input-holder"></div>
+      </div>
+    </div>
     <button class="ui button" type="submit">Submit</button>
   </form>
-</div>
+
+<script type="text/template" id="search-ingredients-input-widget">
+  <div class="row">
+    <div class="twelve wide column">
+      <div class='ui category search'>
+        <div class='ui icon input'>
+          <input class='prompt' type='text' name='ingredient[]' placeholder='Search ingredients...'>
+          <i class='search icon'></i>
+        </div>
+        <div class='results'></div>
+      </div>
+    </div>
+    <div class="four wide column">
+      <input type="text" name="quantity[]" />
+    </div>
+  </div>
+</script>

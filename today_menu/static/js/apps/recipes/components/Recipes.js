@@ -2,6 +2,7 @@
 var React         = require('react'),
     Recipe        = require('./Recipe.js'),
     Backbone      = require('backbone'),
+    FormComponent = require('./Form.js'),
     BackboneReact = require('backbone-react-component');
 
 var IngredientsComponent = React.createClass({
@@ -13,8 +14,23 @@ var IngredientsComponent = React.createClass({
     return <Recipe key={recipe.id} model={model} />
   },
 
+  addRecipe: function() {
+    var form = React.render(<FormComponent />, $('#modal-form-container').get(0));
+    $('.ui.modal').modal('show');
+  },
+
   render: function() {
-    return <div className="ui list">{this.state.collection.map(this.renderRecipes)}</div>
+    return (
+      <div className="recipes-holder">
+        <button className="ui olive button" onClick={this.addRecipe}>
+          <i className="icon add square"></i>
+          <label>Add</label>
+        </button>
+        <div className="ui list">
+          {this.state.collection.map(this.renderRecipes)}
+        </div>
+      </div>
+    )
   }
 
 });

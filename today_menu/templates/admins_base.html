@@ -32,7 +32,6 @@
 
     };
 
-
     // attach ready event
     $(document).ready(menu.ready);
 
@@ -60,17 +59,15 @@
       </div>
     </div>
     <div class="ui segment">
-      <button class="ui olive button" id="add-element-btn">
-        <i class="icon add square"></i>
-        Add
-      </button>
-      <p id="menu-container"></p>
+      <p id="menu-container">
+        <div id="recipes-container"></div>
+      </p>
     </div>
   </div>
 
+{% comment %}
 {% include 'recipes/form.html' %}
 
-{% comment %}
 <div class="ui vertical menu" style="display: none">
   <a class="active teal item">
     Inbox

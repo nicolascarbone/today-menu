@@ -27,13 +27,16 @@ class All(Api):
 class Search(Api):
 
     def get(self, request, *args, **kwargs):
-        query = request.GET.get('query', '')
+        query = request.GET.get('q', '')
         collection = Ingredient.objects.filter(name__contains=query)
         response = []
         for model in collection:
-            response.append({'title': model.name})
+            response.append({
+                'id': model.id,
+                'title': model.name
+            })
 
-        return HttpResponse(json.dumps(response))
+        return HttpResponse(json.dumps({'results': response}))
 
 
 class Save(Api):
