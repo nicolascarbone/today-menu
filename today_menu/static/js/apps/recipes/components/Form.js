@@ -16,10 +16,16 @@ var IngredientRecipe = React.createClass({
 
   render: function() {
     return(
-      <div className="item">
-        <i className="shop icon"></i>
-        <div className="content">
-          {this.state.model.name}
+      <div className="row">
+        <div className="twelve wide column">
+          <div className='ui category search'>
+            <div className='ui icon input'>
+              <label>{this.state.model.name}</label>
+            </div>
+          </div>
+        </div>
+        <div className="three wide column">
+          <label>{this.state.model.quantity}</label>
         </div>
       </div>
     );
@@ -37,9 +43,8 @@ var IngredientsRecipe = React.createClass({
   },
 
   render: function() {
-    console.log("this.state.collection22222 ", this.getCollection());
     return(
-      <div className="ui grid">
+      <div className="ui grid column">
         <SearchInput collection={this.getCollection} />
         {this.state.collection.map(this.renderIngredient)}
       </div>
@@ -72,19 +77,12 @@ module.exports = React.createClass({
     this.setState(nextState);
   },
 
-  addSearchInput: function( e ) {
-    e.preventDefault();
-    console.log("add search input");
-  },
-
   renderIngredients: function( ingredient ) {
-    console.log("ingredient ", ingredient);
     var model = new IngredientsRecipeModel( ingredient );
     //return <IngredientRecipe key={ingredient.id} model={model} />
   },
 
   render: function() {
-    console.log("this.state.ingredients_col ", this.state.ingredients_col);
     return(
       <form className="ui form" onSubmit={this.handleSubmit}>
         <div className="field">
@@ -98,10 +96,6 @@ module.exports = React.createClass({
         <div id="search-fields-container" className="field">
           <div className="field">
             <label>Ingredients</label>
-            <button className="ui olive button add-ingredient-btn" onClick={this.addSearchInput}>
-              <i className="icon add square"></i>
-              Add Another
-            </button>
             <div className="ui grid search-input-holder">
               <IngredientsRecipe collection={this.state.ingredients_col} />
             </div>
