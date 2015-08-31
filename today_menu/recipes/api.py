@@ -1,4 +1,5 @@
 
+from django.http import HttpResponse
 
 from api.api import Api
 from .models import Recipe, IngredientRecipe
@@ -26,9 +27,6 @@ class Save(Api):
         return self.response(collection=[recipe])
 
     def delete(self, request, *args, **kwargs):
-        print(args)
-        print(kwargs)
-        print(request)
-        # pk = kwargs.get('pk');
-        # Recipe.objects.get(pk=pk).delete()
+        pk = kwargs.get('pk');
+        Recipe.objects.get(pk=pk).delete()
         return HttpResponse({})

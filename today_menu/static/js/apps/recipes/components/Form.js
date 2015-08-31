@@ -1,4 +1,5 @@
 
+/** @jsx React.DOM */
 var _             = require('underscore'),
     React         = require('react'),
     Backbone      = require('backbone'),
@@ -6,10 +7,11 @@ var _             = require('underscore'),
     BackboneReact = require('backbone-react-component');
 
 
-var RecipeModel            = Backbone.Model.extend({
+var RecipeModel = Backbone.Model.extend({
       url: '/recipes/api/save/'
-    }),
-    IngredientsRecipeModel = Backbone.Model,
+    });
+
+var IngredientsRecipeModel = Backbone.Model,
     IngredientsRecipeCol   = Backbone.Collection.extend({
       model: IngredientsRecipeModel
     });

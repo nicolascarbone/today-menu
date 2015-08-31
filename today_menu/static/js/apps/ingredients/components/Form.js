@@ -1,9 +1,12 @@
 
+/** @jsx React.DOM */
 var React         = require('react'),
+    Model         = require('../model'),
     Backbone      = require('backbone'),
     BackboneReact = require('backbone-react-component');
 
-var FormComponent = React.createClass({
+
+module.exports = React.createClass({
 
   mixins: [Backbone.React.Component.mixin],
 
@@ -16,7 +19,15 @@ var FormComponent = React.createClass({
 
   handleSubmit: function( e ) {
     e.preventDefault();
-    this.getCollection().create(this.state);
+
+    var model = new Model(),
+        collection = this.getCollection();
+
+    model.save(this.state, {
+      'success': function( response, model ) {
+        collection.add( model );
+      }
+    });
     $('.ui.modal').modal('hide');
   },
 
@@ -43,5 +54,3 @@ var FormComponent = React.createClass({
   }
 
 });
-
-module.exports = FormComponent;

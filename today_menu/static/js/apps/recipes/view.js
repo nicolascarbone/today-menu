@@ -1,7 +1,5 @@
 
-var _                 = require('underscore'),
-    React             = require('react');
-    Model             = require('./model.js'),
+var React             = require('react'),
     Backbone          = require('backbone'),
     RecipesComponent  = require('./components/Recipes');
 
@@ -14,7 +12,6 @@ module.exports = Backbone.View.extend({
   },
 
   render: function() {
-
     this.collection.fetch({'success': function(col, response) {
       React.render(<RecipesComponent collection={col} />, $('#content').get(0));
     }});

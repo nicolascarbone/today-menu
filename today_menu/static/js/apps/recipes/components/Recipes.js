@@ -1,8 +1,9 @@
+
 /** @jsx React.DOM */
 var React         = require('react'),
-    Recipe        = require('./Recipe.js'),
+    Recipe        = require('./Recipe'),
     Backbone      = require('backbone'),
-    FormComponent = require('./Form.js'),
+    FormComponent = require('./Form'),
     BackboneReact = require('backbone-react-component');
 
 var IngredientsComponent = React.createClass({

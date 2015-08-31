@@ -1,3 +1,6 @@
+
+/** @jsx React.DOM */
+
 var React         = require('react'),
     Backbone      = require('backbone'),
     BackboneReact = require('backbone-react-component');
@@ -44,8 +47,6 @@ module.exports = React.createClass({
   },
 
   addIngredient: function( e ) {
-    console.log("add this ingredient ", this.state );
-    // Add ingredient to collection
     this.getCollection().add(this.state);
   },
 

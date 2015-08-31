@@ -1,9 +1,12 @@
+
 /** @jsx React.DOM */
 var React         = require('react'),
-    Ingredient    = require('./Ingredient.js'),
-    Model         = require('../model.js'),
+    Model         = require('../model'),
     Backbone      = require('backbone'),
+    Ingredient    = require('./Ingredient'),
+    FormComponent = require('./Form'),
     BackboneReact = require('backbone-react-component');
+
 
 var IngredientsComponent = React.createClass({
 
@@ -14,8 +17,27 @@ var IngredientsComponent = React.createClass({
     return <Ingredient key={ingredient.id} model={model} />
   },
 
+  addIngredient: function( e ) {
+
+    var col = this.getCollection();
+    console.log("addIng", col);
+
+    React.render(<FormComponent collection={col} />, $('#modal-form-container').get(0));
+    $('.ui.modal').modal('show');
+  },
+
   render: function() {
-    return <div className="ui list ingredients">{this.state.collection.map(this.renderIngredient)}</div>
+    return (
+      <div className="recipes-holder">
+        <button className="ui olive button" onClick={this.addIngredient}>
+          <i className="icon add square"></i>
+          <label>Add</label>
+        </button>
+        <div className="ui list">
+          {this.state.collection.map(this.renderIngredient)}
+        </div>
+      </div>
+    )
   }
 
 });

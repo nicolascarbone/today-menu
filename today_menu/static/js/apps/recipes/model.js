@@ -5,6 +5,6 @@ module.exports = Backbone.Model.extend({
   idAttribute: 'id',
   urlRoot: '/recipes/api/save/',
   url: function() {
-    return this.urlRoot + this.id + '/';
+    return ( this.id !== undefined ) ? this.urlRoot + this.id + '/' : this.urlRoot;
   }
 });
