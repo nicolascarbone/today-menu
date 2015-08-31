@@ -53,7 +53,7 @@ module.exports = React.createClass({
   render: function() {
     return (
       <div className="row">
-        <div className="twelve wide column">
+        <div className="eight wide column">
           <div className='ui category search'>
             <div className='ui icon input'>
               <input className='prompt' type='text' name='ingredient[]' placeholder='Search ingredients...' onChange={this.handleChange.bind(this, 'name')} />
@@ -63,6 +63,13 @@ module.exports = React.createClass({
         </div>
         <div className="three wide column">
           <input type="text" name="quantity[]" onChange={this.handleChange.bind(this, 'quantity')} />
+        </div>
+        <div className="two wide column">
+          <select className="ui dropdown">
+            <option value="unit">Unidad</option>
+            <option value="kilo">Kilo</option>
+            <option value="gramo">Gramo</option>
+          </select>
         </div>
         <div className="one wide column">
           <i className='check circle outline icon' onClick={this.addIngredient}></i>

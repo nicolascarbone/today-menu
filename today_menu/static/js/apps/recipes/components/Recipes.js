@@ -16,7 +16,8 @@ var IngredientsComponent = React.createClass({
   },
 
   addRecipe: function() {
-    var form = React.render(<FormComponent />, $('#modal-form-container').get(0));
+    React.render(<FormComponent />, $('#modal-form-container').get(0));
+    $('.ui.dropdown').dropdown();
     $('.ui.modal').modal('show');
   },
 
