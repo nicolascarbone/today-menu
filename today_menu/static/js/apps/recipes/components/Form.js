@@ -1,14 +1,18 @@
 
-var React         = require('react'),
+var _             = require('underscore'),
+    React         = require('react'),
     Backbone      = require('backbone'),
     SearchInput   = require('./SearchInput.js'),
     BackboneReact = require('backbone-react-component');
 
 
-var IngredientsRecipeModel = Backbone.Model;
-var IngredientsRecipeCol = Backbone.Collection.extend({
-  model: IngredientsRecipeModel
-});
+var RecipeModel            = Backbone.Model.extend({
+      url: '/recipes/api/save/'
+    }),
+    IngredientsRecipeModel = Backbone.Model,
+    IngredientsRecipeCol   = Backbone.Collection.extend({
+      model: IngredientsRecipeModel
+    });
 
 var IngredientRecipe = React.createClass({
 
@@ -67,8 +71,20 @@ module.exports = React.createClass({
 
   handleSubmit: function( e ) {
     e.preventDefault();
-    this.getCollection().create(this.state);
-    $('.ui.modal').modal('hide');
+
+    var data = {
+      'name': this.state.name,
+      'description': this.state.description,
+      'ingredients': _.map(this.state.ingredients_col.models, function( ingredient ) {
+        return {
+          'id': ingredient.get('id'),
+        }
+      })
+    };
+
+    var model = new RecipeModel(data);
+    model.save();
+
   },
 
   handleChange: function( field, e ) {

@@ -11,7 +11,7 @@ module.exports = React.createClass({
       'id': '',
       'name': '',
       'quantity': ''
-    }
+    };
   },
 
   componentDidMount: function() {
@@ -32,20 +32,21 @@ module.exports = React.createClass({
     var state = {
       'id': selected.id,
       'name': selected.title
-    }
+    };
     this.setState(state);
   },
 
   handleChange: function( field, e ) {
     var nextState = {};
+    // save current input value to component state
     nextState[field] = e.target.value;
     this.setState(nextState);
   },
 
   addIngredient: function( e ) {
     console.log("add this ingredient ", this.state );
-    console.log(this.getCollection().add(this.state));
-    //this.state.
+    // Add ingredient to collection
+    this.getCollection().add(this.state);
   },
 
   render: function() {
@@ -70,4 +71,3 @@ module.exports = React.createClass({
   }
 
 });
-

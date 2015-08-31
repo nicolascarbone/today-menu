@@ -41,11 +41,11 @@ module.exports = Backbone.Router.extend({
   ingredients: function() {
     this.selectTab('#ingredients');
     var View = this.getView('ingredients');
-    // console.log("VIEW ", View);
     View.render();
   },
 
   recipes: function() {
+    this.selectTab('#recipes');
     var ViewModule  = require('./apps/recipes/view.js'),
         View        = new ViewModule();
     View.render();

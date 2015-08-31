@@ -3,5 +3,8 @@ var Backbone  = require('backbone');
 
 module.exports = Backbone.Model.extend({
   idAttribute: 'id',
-  url: '/recipes/api/save/'
+  urlRoot: '/recipes/api/save/',
+  url: function() {
+    return this.urlRoot + this.id + '/';
+  }
 });
