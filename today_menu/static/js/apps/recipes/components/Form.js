@@ -78,8 +78,10 @@ module.exports = React.createClass({
       'name': this.state.name,
       'description': this.state.description,
       'ingredients': _.map(this.state.ingredients_col.models, function( ingredient ) {
+        console.log(ingredient);
         return {
           'id': ingredient.get('id'),
+          'quantity': ingredient.get('quantity'),
         }
       })
     };
